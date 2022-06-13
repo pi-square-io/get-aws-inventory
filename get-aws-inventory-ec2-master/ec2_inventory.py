@@ -10,14 +10,24 @@ import random
 
 ec2_cli=boto3.client(service_name= "ec2")
 s3 =  boto3.resource('s3')
-client = boto3.client('rds')
+rds = boto3.client('rds')
 iam = boto3.client('iam')
+cloudwatch = boto3.client('cloudwatch')
+ses = boto3.client('ses')
+sqs = boto3.client('sqs')
 
+###################################""""
+# List SQS queues
+response = sqs.list_queues()
+
+print(response['QueueUrls'])
 ## pourS3
 for bucket in s3.buckets.all():  
     my_bucket = s3.Bucket(bucket.name)
     for file in my_bucket.objects.all():
      print (f"Bucket:{bucket.name} Key: {file.key}")
+
+     ###########################################################""""""
 
 ## pour ec2
 collect_all_regions=[]
@@ -36,32 +46,93 @@ for each_region in collect_all_regions:
        
 fo.close()               
 
- 
+ ##################################################################""""
 ## kinesis
 
-STREAM_NAME = "ExampleInputStream"
+# STREAM_NAME = "ExampleInputStream"
 
 
-def get_data():
-    return {
-        'EVENT_TIME': datetime.datetime.now().isoformat(),
-        'TICKER': random.choice(['AAPL', 'AMZN', 'MSFT', 'INTC', 'TBV']),
-        'PRICE': round(random.random() * 100, 2)}
+# def get_data():
+#     return {
+#         'EVENT_TIME': datetime.datetime.now().isoformat(),
+#         'TICKER': random.choice(['AAPL', 'AMZN', 'MSFT', 'INTC', 'TBV']),
+#         'PRICE': round(random.random() * 100, 2)}
 
 
-def generate(stream_name, kinesis_client):
-    while True:
-        data = get_data()
-        print(data)
-        kinesis_client.put_record(
-            StreamName=stream_name,
-            Data=json.dumps(data),
-            PartitionKey="partitionkey")
+# def generate(stream_name, kinesis_client):
+#     while True:
+#         data = get_data()
+#         print(data)
+#         kinesis_client.put_record(
+#             StreamName=stream_name,
+#             Data=json.dumps(data),
+#             PartitionKey="partitionkey")
 
 
-if __name__ == '__main__':
-    generate(STREAM_NAME, boto3.client('kinesis'))
+# if __name__ == '__main__':
+#     generate(STREAM_NAME, boto3.client('kinesis'))
     
     
+################################""
+#vpc
+response = client.describe_vpcs(
+    Filters=[
+        {
+            'Name': 'tag:Name',
+            'Values': [
+                '<Enter you VPC name here>',
+            ]
+        },
+        {
+            'Name': 'cidr-block-association.cidr-block',
+            'Values': [
+                '10.0.0.0/16', #Enter you cidr block here
+            ]
+        },        
+    ]
+)
+resp = response['Vpcs']
+if resp:
+    print(resp)
+else:
+    print('No vpcs found')
+##################################################################################""
+#  CloudWatch client
 
-## create policy
+
+# List metrics through the pagination interface
+paginator = cloudwatch.get_paginator('list_metrics')
+for response in paginator.paginate(Dimensions=[{'Name': 'LogGroupName'}],
+                                   MetricName='IncomingLogEvents',
+                                   Namespace='AWS/Logs'):
+    print(response['Metrics'])    
+ ###################################################
+ #  SES client
+
+
+response = ses.verify_email_identity(
+  EmailAddress = 'EMAIL_ADDRESS'
+)
+
+
+
+response = ses.verify_domain_identity(
+  Domain='DOMAIN_NAME'
+)
+
+
+response = ses.list_identities(
+  IdentityType = 'EmailAddress',
+  MaxItems=10
+)
+
+
+response = ses.list_identities(
+  IdentityType = 'Domain',
+  MaxItems=10
+)
+
+print(response)   
+###############################################""
+
+

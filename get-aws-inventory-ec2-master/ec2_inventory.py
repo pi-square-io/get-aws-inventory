@@ -16,6 +16,11 @@ cloudwatch = boto3.client('cloudwatch')
 ses = boto3.client('ses')
 sqs = boto3.client('sqs')
 
+
+
+
+
+       
 ###################################""""
 # List SQS queues
 response = sqs.list_queues()
@@ -28,53 +33,8 @@ for bucket in s3.buckets.all():
      print (f"Bucket:{bucket.name} Key: {file.key}")
 
      ###########################################################""""""
-
-## pour ec2
-collect_all_regions=[]
-for each_region in ec2_cli.describe_regions()['Regions']:
-    collect_all_regions.append(each_region['RegionName'])
-print(collect_all_regions)
-fo=open('ec2_inven_new.csv','w')
-data_obj=csv.writer(fo)
-data_obj.writerow(['Sno','Instance ID',"InstanceType","KeyName","Private_ip","Public_IP"])
-
-cnt=1
-for each_region in collect_all_regions:
-    ec2_re=boto3.resource(service_name='ec2',region_name=each_region)
-    for each_ins_in_reg in ec2_re.instances.all():
-        data_obj.writerow(each_ins_in_reg.public_ip_address)
-       
-fo.close()               
-
- ##################################################################""""
-## kinesis
-
-# STREAM_NAME = "ExampleInputStream"
-
-
-# def get_data():
-#     return {
-#         'EVENT_TIME': datetime.datetime.now().isoformat(),
-#         'TICKER': random.choice(['AAPL', 'AMZN', 'MSFT', 'INTC', 'TBV']),
-#         'PRICE': round(random.random() * 100, 2)}
-
-
-# def generate(stream_name, kinesis_client):
-#     while True:
-#         data = get_data()
-#         print(data)
-#         kinesis_client.put_record(
-#             StreamName=stream_name,
-#             Data=json.dumps(data),
-#             PartitionKey="partitionkey")
-
-
-# if __name__ == '__main__':
-#     generate(STREAM_NAME, boto3.client('kinesis'))
-    
-    
-################################""
-#vpc
+     #vpc
+client = boto3.client('ec2',region_name='us-east-1')
 response = client.describe_vpcs(
     Filters=[
         {
@@ -107,7 +67,34 @@ for response in paginator.paginate(Dimensions=[{'Name': 'LogGroupName'}],
                                    Namespace='AWS/Logs'):
     print(response['Metrics'])    
  ###################################################
- #  SES client
+# f=open('inven_new.csv','w')
+# data_obj=csv.writer(f)
+# data_obj.writerow('s3','sqs','ses') 
+###############################################""
+
+
+# pour ec2
+collect_all_regions=[]
+for each_region in ec2_cli.describe_regions()['Regions']:
+    collect_all_regions.append(each_region['RegionName'])
+print(collect_all_regions)
+fo=open('ec2_inven_new.csv','w')
+data_obj=csv.writer(fo)
+data_obj.writerow(['Sno','Instance ID',"InstanceType","KeyName","Private_ip","Public_IP"])
+
+cnt=1
+for each_region in collect_all_regions:
+    ec2_re=boto3.resource(service_name='ec2',region_name=each_region)
+    for each_ins_in_reg in ec2_re.instances.all():
+        data_obj.writerow(each_ins_in_reg.public_ip_address)
+
+
+# fo.close()               
+
+#  ##################################################################""""
+
+
+#  SES client
 
 
 response = ses.verify_email_identity(
@@ -133,6 +120,30 @@ response = ses.list_identities(
 )
 
 print(response)   
-###############################################""
+# ## kinesis
+
+# STREAM_NAME = "ExampleInputStream"
 
 
+# def get_data():
+#     return {
+#         'EVENT_TIME': datetime.datetime.now().isoformat(),
+#         'TICKER': random.choice(['AAPL', 'AMZN', 'MSFT', 'INTC', 'TBV']),
+#         'PRICE': round(random.random() * 100, 2)}
+
+
+# def generate(stream_name, kinesis_client):
+#     while True:
+#         data = get_data()
+#         print(data)
+#         kinesis_client.put_record(
+#             StreamName=stream_name,
+#             Data=json.dumps(data),
+#             PartitionKey="partitionkey")
+
+
+# if __name__ == '__main__':
+#     generate(STREAM_NAME, boto3.client('kinesis'))
+    
+    
+################################""

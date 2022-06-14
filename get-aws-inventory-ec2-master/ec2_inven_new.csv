@@ -1,0 +1,53 @@
+########################## ec2 #########################
+Sno,Instance ID,InstanceType,KeyName,Private_ip,Public_IP
+1,i-0c1e4a451c49f6d76,t3.medium,cluster-key-pair,,
+########################## ec2 #########################
+########################## S3 #########################
+Sno,Bucket Name
+1,s3.Bucket(name='aws-cloudtrail-logs-974195321489-1aae8a97')
+2,s3.Bucket(name='cdk-hnb659fds-assets-974195321489-us-east-1')
+3,s3.Bucket(name='elasticbeanstalk-us-east-1-974195321489')
+4,s3.Bucket(name='my-unique-435frzqrf')
+5,s3.Bucket(name='serverless-module-tfsates')
+########################## sqs #########################
+Sno,queueURL
+1,sqs.Queue(url='https://queue.amazonaws.com/974195321489/MyQueue.fifo')
+########################## sns #########################
+Sno,Topic
+1,sns.Topic(arn='arn:aws:sns:eu-west-1:974195321489:welcome-email')
+########################## Lambda #########################
+Sno,Name
+1,"{'RequestId': '29a3bbf6-a3d7-47cd-a8fc-7592ae2bdb0c', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:17 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': '29a3bbf6-a3d7-47cd-a8fc-7592ae2bdb0c'}, 'RetryAttempts': 0}"
+2,[]
+3,"{'RequestId': '98b5bdbb-480d-430a-b745-24bdccd428cd', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:17 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': '98b5bdbb-480d-430a-b745-24bdccd428cd'}, 'RetryAttempts': 0}"
+4,[]
+5,"{'RequestId': '131d43df-080b-4e95-ad13-7883f2732c5d', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:18 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': '131d43df-080b-4e95-ad13-7883f2732c5d'}, 'RetryAttempts': 0}"
+6,[]
+7,"{'RequestId': '040ac04b-80ca-49ed-bfa6-99ce9bb90ce8', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:18 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': '040ac04b-80ca-49ed-bfa6-99ce9bb90ce8'}, 'RetryAttempts': 0}"
+8,[]
+9,"{'RequestId': 'dacdc14d-5e4f-482d-a724-ac0e4b2c3d97', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:18 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': 'dacdc14d-5e4f-482d-a724-ac0e4b2c3d97'}, 'RetryAttempts': 0}"
+10,[]
+11,"{'RequestId': '2fcc9d4f-4afd-4487-9a17-cb4d1beadc25', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:19 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': '2fcc9d4f-4afd-4487-9a17-cb4d1beadc25'}, 'RetryAttempts': 0}"
+12,[]
+13,"{'RequestId': '77c74fd8-16b3-43db-aa22-8621b524607b', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:20 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': '77c74fd8-16b3-43db-aa22-8621b524607b'}, 'RetryAttempts': 0}"
+14,[]
+15,"{'RequestId': '43698264-cda5-47f8-a5bb-8e434aa5464e', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:22 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': '43698264-cda5-47f8-a5bb-8e434aa5464e'}, 'RetryAttempts': 0}"
+16,[]
+17,"{'RequestId': '37933cfa-7bb6-4e91-839b-6eaa480cf18c', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:23 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': '37933cfa-7bb6-4e91-839b-6eaa480cf18c'}, 'RetryAttempts': 0}"
+18,[]
+19,"{'RequestId': '3bcf6547-e0dc-4747-befa-ed3f8e01a502', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:23 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': '3bcf6547-e0dc-4747-befa-ed3f8e01a502'}, 'RetryAttempts': 0}"
+20,[]
+21,"{'RequestId': '11da00b0-86ab-4f17-a65b-979db655c2de', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:24 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': '11da00b0-86ab-4f17-a65b-979db655c2de'}, 'RetryAttempts': 0}"
+22,[]
+23,"{'RequestId': '10cea8c7-6b5f-4e58-b3d8-161949314ac0', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:25 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': '10cea8c7-6b5f-4e58-b3d8-161949314ac0'}, 'RetryAttempts': 0}"
+24,[]
+25,"{'RequestId': '0a487b46-ff5c-4f51-a16b-650c37df5913', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:26 GMT', 'content-type': 'application/json', 'content-length': '3098', 'connection': 'keep-alive', 'x-amzn-requestid': '0a487b46-ff5c-4f51-a16b-650c37df5913'}, 'RetryAttempts': 0}"
+26,"[{'FunctionName': 'secondfunction', 'FunctionArn': 'arn:aws:lambda:eu-central-1:974195321489:function:secondfunction', 'Runtime': 'python3.7', 'Role': 'arn:aws:iam::974195321489:role/service-role/S3_read_permissions', 'Handler': 'lambda_function.lambda_handler', 'CodeSize': 566, 'Description': 'An Amazon S3 trigger that retrieves metadata for the object that has been updated.', 'Timeout': 3, 'MemorySize': 128, 'LastModified': '2022-03-01T13:43:18.116+0000', 'CodeSha256': 'A5BpUbL15IaGwQKIn1g6tdlecHPiAySMYQpQajK12ew=', 'Version': '$LATEST', 'TracingConfig': {'Mode': 'PassThrough'}, 'RevisionId': '847cf5ed-ea29-42f6-8b21-d11e13b32ce7', 'PackageType': 'Zip', 'Architectures': ['x86_64'], 'EphemeralStorage': {'Size': 512}}, {'FunctionName': 'myFirstLambdaFunction', 'FunctionArn': 'arn:aws:lambda:eu-central-1:974195321489:function:myFirstLambdaFunction', 'Runtime': 'python3.7', 'Role': 'arn:aws:iam::974195321489:role/service-role/s3_get_objects', 'Handler': 'datadog_lambda.handler.handler', 'CodeSize': 896, 'Description': 'An Amazon S3 trigger that retrieves metadata for the object that has been updated.', 'Timeout': 3, 'MemorySize': 128, 'LastModified': '2022-03-03T09:32:41.000+0000', 'CodeSha256': 'T3xpXFfG7A/vvAKpQNcb5Txi/2aLIFzIVVpfn++wt2s=', 'Version': '$LATEST', 'Environment': {'Variables': {'DD_API_KEY': '369fb6b15f1df0f07545c241a163ee8a', 'DD_SITE': 'datadoghq.com', 'DD_LAMBDA_HANDLER': 'lambda_function.lambda_handler', 'DD_CAPTURE_LAMBDA_PAYLOAD': 'false', 'DD_TRACE_ENABLED': 'true', 'DD_MERGE_XRAY_TRACES': 'false'}}, 'TracingConfig': {'Mode': 'PassThrough'}, 'RevisionId': 'a64b17c5-1b16-45de-a2a3-e4d8f0920213', 'Layers': [{'Arn': 'arn:aws:lambda:eu-central-1:464622532012:layer:Datadog-Extension:10', 'CodeSize': 8795473, 'SigningProfileVersionArn': 'arn:aws:signer:us-east-1:464622532012:/signing-profiles/DatadogLambdaSigningProfile/9vMI9ZAGLc', 'SigningJobArn': 'arn:aws:signer:us-east-1:464622532012:/signing-jobs/cc5ee446-6b37-40af-a4b8-ca3c7ddbb234'}, {'Arn': 'arn:aws:lambda:eu-central-1:464622532012:layer:Datadog-Python37:46', 'CodeSize': 4521657, 'SigningProfileVersionArn': 'arn:aws:signer:us-east-1:464622532012:/signing-profiles/DatadogLambdaSigningProfile/9vMI9ZAGLc', 'SigningJobArn': 'arn:aws:signer:us-east-1:464622532012:/signing-jobs/ac351bf2-c5ac-428e-b9c9-3417a3fdd3b2'}], 'PackageType': 'Zip', 'Architectures': ['x86_64'], 'EphemeralStorage': {'Size': 512}}]"
+27,"{'RequestId': 'f9f7de68-942d-4ff5-99b7-d89f351efdec', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:26 GMT', 'content-type': 'application/json', 'content-length': '1078', 'connection': 'keep-alive', 'x-amzn-requestid': 'f9f7de68-942d-4ff5-99b7-d89f351efdec'}, 'RetryAttempts': 0}"
+28,"[{'FunctionName': 'UpdateSecurityGroupsForCloudFront', 'FunctionArn': 'arn:aws:lambda:us-east-1:974195321489:function:UpdateSecurityGroupsForCloudFront', 'Runtime': 'python3.8', 'Role': 'arn:aws:iam::974195321489:role/LambdaExecRole-UpdateSecurityGroupsForCloudFront', 'Handler': 'index.lambda_handler', 'CodeSize': 3033, 'Description': '', 'Timeout': 10, 'MemorySize': 128, 'LastModified': '2022-06-10T09:57:59.000+0000', 'CodeSha256': '7niWQvWsEAbZMHn8t4fjDG35UvbyK1/7uvvoxEt3hYw=', 'Version': '$LATEST', 'Environment': {'Variables': {'foo': 'bar'}}, 'TracingConfig': {'Mode': 'PassThrough'}, 'RevisionId': '6adf4c48-1f40-4eec-b06c-c767431fc5c9', 'PackageType': 'Zip', 'Architectures': ['x86_64'], 'EphemeralStorage': {'Size': 512}}]"
+29,"{'RequestId': '4fd1b26e-1590-4bf7-b557-aedf940f371a', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:27 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': '4fd1b26e-1590-4bf7-b557-aedf940f371a'}, 'RetryAttempts': 0}"
+30,[]
+31,"{'RequestId': 'c156bf3f-b528-45e7-a38f-4694a6a11abc', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:28 GMT', 'content-type': 'application/json', 'content-length': '34', 'connection': 'keep-alive', 'x-amzn-requestid': 'c156bf3f-b528-45e7-a38f-4694a6a11abc'}, 'RetryAttempts': 0}"
+32,[]
+33,"{'RequestId': 'bea8685b-f6d6-4958-88f0-8f46594b9f07', 'HTTPStatusCode': 200, 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:13:29 GMT', 'content-type': 'application/json', 'content-length': '1010', 'connection': 'keep-alive', 'x-amzn-requestid': 'bea8685b-f6d6-4958-88f0-8f46594b9f07'}, 'RetryAttempts': 0}"
+34,"[{'FunctionName': 'MyFirstLambdaFunction', 'FunctionArn': 'arn:aws:lambda:us-west-2:974195321489:function:MyFirstLambdaFunction', 'Runtime': 'python3.6', 'Role': 'arn:aws:iam::974195321489:role/service-role/LambdaExecutionRole', 'Handler': 'lambda_function.lambda_handler', 'CodeSize': 296, 'Description': '', 'Timeout': 3, 'MemorySize': 128, 'LastModified': '2021-10-22T13:59:53.234+0000', 'CodeSha256': 'DeGPNVVM0KyqnIEegue5LDi2FG2w+vgaasPTLgekMbM=', 'Version': '$LATEST', 'TracingConfig': {'Mode': 'PassThrough'}, 'RevisionId': 'fbb0b414-de0e-4920-868a-422d0fae745f', 'PackageType': 'Zip', 'Architectures': ['x86_64'], 'EphemeralStorage': {'Size': 512}}]"

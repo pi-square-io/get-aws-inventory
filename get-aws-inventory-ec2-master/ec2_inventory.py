@@ -25,15 +25,16 @@ sqs = boto3.client('sqs')
 # List SQS queues
 response = sqs.list_queues()
 
-print(response['QueueUrls'])
+#print(response['QueueUrls'])
 ## pourS3
-for bucket in s3.buckets.all():  
-    my_bucket = s3.Bucket(bucket.name)
-    for file in my_bucket.objects.all():
-     print (f"Bucket:{bucket.name} Key: {file.key}")
+# for bucket in s3.buckets.all():  
+#     my_bucket = s3.Bucket(bucket.name)
+#     for file in my_bucket.objects.all():
+#      #print (f"Bucket:{bucket.name} Key: {file.key}")
+#         print ("hello")
 
-     ###########################################################""""""
-     #vpc
+#      ###########################################################""""""
+#      #vpc
 client = boto3.client('ec2',region_name='us-east-1')
 response = client.describe_vpcs(
     Filters=[
@@ -56,94 +57,68 @@ if resp:
     print(resp)
 else:
     print('No vpcs found')
-##################################################################################""
-#  CloudWatch client
 
 
-# List metrics through the pagination interface
-paginator = cloudwatch.get_paginator('list_metrics')
-for response in paginator.paginate(Dimensions=[{'Name': 'LogGroupName'}],
-                                   MetricName='IncomingLogEvents',
-                                   Namespace='AWS/Logs'):
-    print(response['Metrics'])    
- ###################################################
-# f=open('inven_new.csv','w')
-# data_obj=csv.writer(f)
-# data_obj.writerow('s3','sqs','ses') 
-###############################################""
 
 
-# pour ec2
 collect_all_regions=[]
 for each_region in ec2_cli.describe_regions()['Regions']:
     collect_all_regions.append(each_region['RegionName'])
 print(collect_all_regions)
 fo=open('ec2_inven_new.csv','w')
 data_obj=csv.writer(fo)
-data_obj.writerow(['Sno','Instance ID',"InstanceType","KeyName","Private_ip","Public_IP"])
 
+
+# pour ec2
 cnt=1
+data_obj.writerow(["########################## ec2 #########################"])
+data_obj.writerow(['Sno','Instance ID',"InstanceType","KeyName","Private_ip","Public_IP"])
 for each_region in collect_all_regions:
     ec2_re=boto3.resource(service_name='ec2',region_name=each_region)
     for each_ins_in_reg in ec2_re.instances.all():
-        data_obj.writerow(each_ins_in_reg.public_ip_address)
+        data_obj.writerow([cnt,each_ins_in_reg.instance_id,each_ins_in_reg.instance_type,each_ins_in_reg.key_name,each_ins_in_reg.private_ip_address,each_ins_in_reg.public_ip_address])
+        cnt+=1
 
+# pour vpc
+cnt=1
+data_obj.writerow(["########################## ec2 #########################"])
+     
+# pour s3
+cnt=1
+data_obj.writerow(["########################## S3 #########################"])
+data_obj.writerow(['Sno','Bucket Name'])
+for bucket in s3.buckets.all():
+    my_bucket = s3.Bucket(bucket.name)
+    data_obj.writerow([cnt,my_bucket])
+    cnt+=1
 
+# pour sqs
+cnt=1
+data_obj.writerow(["########################## sqs #########################"])
+data_obj.writerow(['Sno',"queueURL"])
+for each_region in collect_all_regions:
+    sqs=boto3.resource(service_name='sqs',region_name=each_region)
+    for sqs_per_region in sqs.queues.all():
+        data_obj.writerow([cnt,sqs_per_region])
+        cnt+=1
+
+# pour sns
+cnt=1
+data_obj.writerow(["########################## sns #########################"])
+data_obj.writerow(['Sno','Topic'])
+for each_region in collect_all_regions:
+    sns=boto3.resource(service_name='sns',region_name=each_region)
+    for sns_per_region in sns.topics.all():
+        data_obj.writerow([cnt,sns_per_region])
+        cnt+=1
 # fo.close()               
 
-#  ##################################################################""""
-
-
-#  SES client
-
-
-response = ses.verify_email_identity(
-  EmailAddress = 'EMAIL_ADDRESS'
-)
-
-
-
-response = ses.verify_domain_identity(
-  Domain='DOMAIN_NAME'
-)
-
-
-response = ses.list_identities(
-  IdentityType = 'EmailAddress',
-  MaxItems=10
-)
-
-
-response = ses.list_identities(
-  IdentityType = 'Domain',
-  MaxItems=10
-)
-
-print(response)   
-# ## kinesis
-
-# STREAM_NAME = "ExampleInputStream"
-
-
-# def get_data():
-#     return {
-#         'EVENT_TIME': datetime.datetime.now().isoformat(),
-#         'TICKER': random.choice(['AAPL', 'AMZN', 'MSFT', 'INTC', 'TBV']),
-#         'PRICE': round(random.random() * 100, 2)}
-
-
-# def generate(stream_name, kinesis_client):
-#     while True:
-#         data = get_data()
-#         print(data)
-#         kinesis_client.put_record(
-#             StreamName=stream_name,
-#             Data=json.dumps(data),
-#             PartitionKey="partitionkey")
-
-
-# if __name__ == '__main__':
-#     generate(STREAM_NAME, boto3.client('kinesis'))
-    
-    
-################################""
+# pour Lambda
+cnt=1
+data_obj.writerow(["########################## Lambda #########################"])
+data_obj.writerow(['Sno','Name'])
+for each_region in collect_all_regions:
+    lamb = boto3.client('lambda',region_name=each_region)
+    for lambda_per_region in lamb.list_functions().values():
+        data_obj.writerow([cnt,lambda_per_region])
+        cnt+=1

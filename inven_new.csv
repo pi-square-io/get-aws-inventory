@@ -1,0 +1,7 @@
+[
+    (
+        u'Functions', 
+        [
+            {
+                u'TracingConfig': {u'Mode': u'PassThrough'}
+                , u'Version': u'$LATEST', u'CodeSha256': u'7niWQvWsEAbZMHn8t4fjDG35UvbyK1/7uvvoxEt3hYw=', u'FunctionName': u'UpdateSecurityGroupsForCloudFront', u'MemorySize': 128, u'RevisionId': u'6adf4c48-1f40-4eec-b06c-c767431fc5c9', u'CodeSize': 3033, u'PackageType': u'Zip', u'FunctionArn': u'arn:aws:lambda:us-east-1:974195321489:function:UpdateSecurityGroupsForCloudFront', u'Environment': {u'Variables': {u'foo': u'bar'}}, u'Handler': u'index.lambda_handler', u'Role': u'arn:aws:iam::974195321489:role/LambdaExecRole-UpdateSecurityGroupsForCloudFront', u'Timeout': 10, u'LastModified': u'2022-06-10T09:57:59.000+0000', u'Runtime': u'python3.8', u'Description': u''}]), ('ResponseMetadata', {'RetryAttempts': 0, 'HTTPStatusCode': 200, 'RequestId': '12410c22-3212-462c-b6c1-c5d3c5332dfd', 'HTTPHeaders': {'date': 'Tue, 14 Jun 2022 16:18:56 GMT', 'x-amzn-requestid': '12410c22-3212-462c-b6c1-c5d3c5332dfd', 'content-length': '1078', 'content-type': 'application/json', 'connection': 'keep-alive'}})]

@@ -65,7 +65,7 @@ collect_all_regions=[]
 for each_region in ec2_cli.describe_regions()['Regions']:
     collect_all_regions.append(each_region['RegionName'])
 print(collect_all_regions)
-fo=open('ec2_inven_new.csv','w')
+fo=open('inven_new.csv','w')
 data_obj=csv.writer(fo)
 
 

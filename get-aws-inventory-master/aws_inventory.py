@@ -15,6 +15,8 @@ iam = boto3.client('iam')
 cloudwatch = boto3.client('cloudwatch')
 ses = boto3.client('ses')
 sqs = boto3.client('sqs')
+client = boto3.client('ssm')
+rds = boto3.client('rds')
 
 
 
@@ -122,3 +124,32 @@ for each_region in collect_all_regions:
     for lambda_per_region in lamb.list_functions().values():
         data_obj.writerow([cnt,lambda_per_region])
         cnt+=1
+##  SSM 
+
+response = client.list_inventory_entries(
+    InstanceId='string',
+    TypeName='string',
+    Filters=[
+        {
+            'Key': 'string',
+            'Values': [
+                'string',
+            ],
+            'Type': 'Equal'|'NotEqual'|'BeginWith'|'LessThan'|'GreaterThan'|'Exists'
+        },
+    ],
+    NextToken='string',
+    MaxResults=123
+)
+        
+#################RDS
+cnt=1
+data_obj.writerow(["########################## rds #########################"])
+data_obj.writerow(['Sno',"DBInstanceIdentifier"])
+for each_region in collect_all_regions:
+    sqs=boto3.resource(service_name='rds',region_name=each_region)
+    for Databases in rds.DBInstanceIdentifier.all():
+        data_obj.writerow([cnt,Databases])
+        cnt+=1
+
+          
